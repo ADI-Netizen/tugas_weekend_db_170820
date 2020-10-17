@@ -1,0 +1,11 @@
+CREATE DATABASE movie;
+USE movie;
+CREATE TABLE netflix (show_id BIGINT PRIMARY KEY, movie_type ENUM("Movie", "TV Show"), title VARCHAR(100), director TEXT, movie_cast TEXT, country VARCHAR(50), date_added DATE, release_year YEAR, rating VARCHAR(20), duration VARCHAR(20), listed_in VARCHAR(100), movie_description TEXT);
+DESCRIBE netflix;
+
+LOAD DATA INFILE 'netflix_titles.csv' INTO TABLE netflix FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+SELECT COUNT(show_id) FROM netflix;
+
+SELECT * FROM netflix WHERE duration LIKE "%90%";
+SELECT * FROM netflix WHERE country = "thailand";
+SELECT * FROM netflix WHERE release_year > 2015 ORDER BY release_year ASC;

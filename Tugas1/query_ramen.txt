@@ -1,0 +1,8 @@
+CREATE DATABASE ramen;
+USE ramen;
+CREATE TABLE rating (review INT PRIMARY KEY, brand VARCHAR(50), variety VARCHAR(100), style ENUM("Cup", "Pack", "Tray", "Bowl", "Box", "Can", "Bar"), country VARCHAR(50), stars FLOAT(3,2), top_ten VARCHAR(20));
+DESCRIBE rating;
+SELECT * FROM rating;
+SELECT review AS "Penilaian Ke", brand AS "Merk", variety AS "Rasa", country AS "Negara", stars AS "Rating" FROM rating WHERE stars > 4 ORDER BY stars DESC;
+SELECT review AS "Penilaian Ke", brand AS "Merk", variety AS "Rasa", style AS "Bentuk", country AS "Negara", stars AS "Rating" FROM rating WHERE country = "Japan";
+SELECT review AS "Penilaian Ke", brand AS "Merk", UPPER(variety) AS "Rasa", style AS "Bentuk", country AS "Negara", stars AS "Rating", top_ten AS "Sepuluh Besar" FROM rating WHERE country = "Japan";
